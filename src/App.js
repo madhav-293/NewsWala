@@ -5,6 +5,17 @@ import News from "./components/News";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 
 export default class App extends Component {
+  // handleSearchClick = (val) => {
+  //   console.log(val);
+  //   // Navigate("/");
+  //   this.setState({ sValue: val });
+  // };
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     sValue: "",
+  //   };
+  // }
   render() {
     return (
       <Router>
@@ -14,22 +25,33 @@ export default class App extends Component {
             exact
             path="/"
             element={
-              <News key={1} pageSize={9} country="in" category="general" />
+              <News
+                key="Home"
+                home="Home"
+                pageSize={9}
+                country="in"
+                category="general"
+              />
             }
           />
           <Route
             exact
-            path="/business"
-            element={
-              <News key={2} pageSize={9} country="in" category="business" />
-            }
-          />
-          <Route
-            exact
-            path="/entertainment"
+            path="/Business"
             element={
               <News
-                key={3}
+                key="Business"
+                pageSize={9}
+                country="in"
+                category="business"
+              />
+            }
+          />
+          <Route
+            exact
+            path="/Entertainment"
+            element={
+              <News
+                key="Entertainment"
                 pageSize={9}
                 country="in"
                 category="entertainment"
@@ -38,39 +60,55 @@ export default class App extends Component {
           />
           <Route
             exact
-            path="/general"
+            path="/General"
             element={
-              <News key={4} pageSize={9} country="in" category="general" />
+              <News
+                key="General"
+                pageSize={9}
+                country="in"
+                category="general"
+              />
             }
           />
           <Route
             exact
-            path="/health"
+            path="/Health"
             element={
-              <News key={5} pageSize={9} country="in" category="health" />
+              <News key="Health" pageSize={9} country="in" category="health" />
             }
           />
           <Route
             exact
-            path="/science"
+            path="/Science"
             element={
-              <News key={6} pageSize={9} country="in" category="science" />
+              <News
+                key="Science"
+                pageSize={9}
+                country="in"
+                category="science"
+              />
             }
           />
           <Route
             exact
-            path="/sports"
+            path="/Sports"
             element={
-              <News key={7} pageSize={9} country="in" category="sports" />
+              <News key="Sports" pageSize={9} country="in" category="sports" />
             }
           />
           <Route
             exact
-            path="/technology"
+            path="/Technology"
             element={
-              <News key={8} pageSize={9} country="in" category="technology" />
+              <News
+                key="Technology"
+                pageSize={9}
+                country="in"
+                category="technology"
+              />
             }
           />
+          {/* forced remount by giving unique key so that it will understand that it has to  remount the component*/}
         </Routes>
       </Router>
     );

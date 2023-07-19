@@ -1,15 +1,24 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default class Navbar extends Component {
+  // constructor(props) {
+  //   super();
+  //   this.state = {
+  //     sValue: "",
+  //   };
+  // }
+  // handleChange = (e) => {
+  //   this.setState({ sValue: e.target.value });
+  // };
   render() {
     return (
       <div>
         <nav className="navbar navbar-dark navbar-expand-lg bg-dark bg-body-dark">
           <div className="container-fluid">
-            <Link className="navbar-brand" to="/">
+            <NavLink className="navbar-brand" to="/">
               NewsWala
-            </Link>
+            </NavLink>
             <button
               className="navbar-toggler"
               type="button"
@@ -27,41 +36,59 @@ export default class Navbar extends Component {
             >
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <Link className="nav-link" to="/general">
+                  <NavLink className="nav-link" to="/General">
                     General
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/business">
+                  <NavLink className="nav-link" to="/Business">
                     Business
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/entertainment">
+                  <NavLink className="nav-link" to="/Entertainment">
                     Entertainment
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/health">
+                  <NavLink className="nav-link" to="/Health">
                     Health
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/science">
+                  <NavLink className="nav-link" to="/Science">
                     Science
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/sports">
+                  <NavLink className="nav-link" to="/Sports">
                     Sports
-                  </Link>
+                  </NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/technology">
+                  <NavLink className="nav-link" to="/Technology">
                     Technology
-                  </Link>
+                  </NavLink>
                 </li>
               </ul>
+              {/* <form className="d-flex">
+                <input
+                  className="form-control me-2"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                  value={this.state.sValue}
+                  onChange={this.handleChange}
+                />
+                <button
+                  className="btn btn-outline-danger"
+                  onClick={() =>
+                    this.props.handleSearchClick(this.state.sValue)
+                  }
+                >
+                  Search
+                </button>
+              </form> */}
             </div>
           </div>
         </nav>
