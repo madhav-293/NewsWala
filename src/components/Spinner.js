@@ -4,7 +4,7 @@ import loading from "./Loading.gif";
 export class Spinner extends Component {
   render() {
     return (
-      <div style={{ position: "absolute", top: "60%", left: "47%" }}>
+      <div className="d-flex justify-content-center">
         <img src={loading} alt="Loading" />
       </div>
     );

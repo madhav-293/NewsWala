@@ -7,12 +7,16 @@ export default class NewsItem extends Component {
     return (
       <div className="my-3">
         <div className="card">
-          <span
-            className="position-absolute top-0 translate-middle badge rounded-pill bg-danger"
-            style={{ zIndex: "1", left: source.length > 8 ? "88%" : "94%" }}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              position: "absolute",
+              right: "0",
+            }}
           >
-            {source}
-          </span>
+            <span className="badge pill bg-danger">{source}</span>
+          </div>
           <img
             src={
               !imageUrl
