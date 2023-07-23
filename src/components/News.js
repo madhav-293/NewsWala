@@ -54,7 +54,7 @@ const News = (props) => {
   }, []);
   return (
     <>
-      <u>
+      <u className={`text-${props.tcolor}`}>
         <h1
           style={{ marginTop: "80px", fontFamily: "cursive" }}
           className={`text-center text-${props.tcolor} mb-2`}
