@@ -1,11 +1,20 @@
 import { NavLink } from "react-router-dom";
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <div>
-      <nav className="navbar navbar-dark navbar-expand-lg bg-dark bg-body-dark">
+      <nav className="navbar navbar-dark fixed-top navbar-expand-lg bg-dark bg-body-dark m-0 p-2">
         <div className="container-fluid">
-          <NavLink className="navbar-brand" to="/">
-            NewsWala
+          <NavLink
+            className="navbar-brand"
+            style={{
+              fontFamily: "cursive",
+              padding: "0px",
+              marginBottom: "0px",
+              justifyContent: "center",
+            }}
+            to="/"
+          >
+            <h4>NewsWala</h4>
           </NavLink>
           <button
             className="navbar-toggler"
@@ -19,43 +28,51 @@ const Navbar = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul className="navbar-nav me-auto mb-lg-0">
               <li className="nav-item">
                 <NavLink className="nav-link" to="/General">
-                  General
+                  <h5>General</h5>
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/Business">
-                  Business
+                  <h5>Business</h5>
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/Entertainment">
-                  Entertainment
+                  <h5>Entertainment</h5>
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/Health">
-                  Health
+                  <h5>Health</h5>
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/Science">
-                  Science
+                  <h5>Science</h5>
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/Sports">
-                  Sports
+                  <h5>Sports</h5>
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/Technology">
-                  Technology
+                  <h5>Technology</h5>
                 </NavLink>
               </li>
             </ul>
+            <h4>
+              <i
+                className={`bi-${props.theme}-fill p-2`}
+                style={{ color: "white" }}
+                onClick={props.handleDarkTheme}
+                id="icon1"
+              ></i>
+            </h4>
           </div>
         </div>
       </nav>

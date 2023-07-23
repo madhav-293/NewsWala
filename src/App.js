@@ -7,10 +7,25 @@ import LoadingBar from "react-top-loading-bar";
 const App = () => {
   const apikey = process.env.REACT_APP_NEWS_API;
   const [progress, setProgress] = useState(0);
-
+  const [theme, setTheme] = useState("moon");
+  const [tcolor, setTcolor] = useState("dark");
+  const [bcolor, setBcolor] = useState("light");
+  const handleDarkTheme = () => {
+    if (theme === "sun") {
+      setTheme("moon");
+      setBcolor("light");
+      setTcolor("dark");
+      document.body.style.backgroundColor = "white";
+    } else {
+      setTheme("sun");
+      setBcolor("dark");
+      setTcolor("light");
+      document.body.style.backgroundColor = "#3a3b3c";
+    }
+  };
   return (
     <Router>
-      <Navbar />
+      <Navbar theme={theme} handleDarkTheme={handleDarkTheme} />
       <LoadingBar color="#f11946" height={3} progress={progress} />
       <Routes>
         <Route
@@ -20,6 +35,8 @@ const App = () => {
             <News
               apikey={apikey}
               setProgress={setProgress}
+              tcolor={tcolor}
+              bcolor={bcolor}
               key="Home"
               home="Home"
               pageSize={9}
@@ -33,6 +50,8 @@ const App = () => {
           path="/Business"
           element={
             <News
+              tcolor={tcolor}
+              bcolor={bcolor}
               apikey={apikey}
               setProgress={setProgress}
               key="Business"
@@ -47,6 +66,8 @@ const App = () => {
           path="/Entertainment"
           element={
             <News
+              tcolor={tcolor}
+              bcolor={bcolor}
               apikey={apikey}
               setProgress={setProgress}
               key="Entertainment"
@@ -61,6 +82,8 @@ const App = () => {
           path="/General"
           element={
             <News
+              tcolor={tcolor}
+              bcolor={bcolor}
               apikey={apikey}
               setProgress={setProgress}
               key="General"
@@ -75,6 +98,8 @@ const App = () => {
           path="/Health"
           element={
             <News
+              tcolor={tcolor}
+              bcolor={bcolor}
               apikey={apikey}
               setProgress={setProgress}
               key="Health"
@@ -89,6 +114,8 @@ const App = () => {
           path="/Science"
           element={
             <News
+              tcolor={tcolor}
+              bcolor={bcolor}
               apikey={apikey}
               setProgress={setProgress}
               key="Science"
@@ -103,6 +130,8 @@ const App = () => {
           path="/Sports"
           element={
             <News
+              tcolor={tcolor}
+              bcolor={bcolor}
               apikey={apikey}
               setProgress={setProgress}
               key="Sports"
@@ -117,6 +146,8 @@ const App = () => {
           path="/Technology"
           element={
             <News
+              tcolor={tcolor}
+              bcolor={bcolor}
               apikey={apikey}
               setProgress={setProgress}
               key="Technology"

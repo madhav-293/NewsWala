@@ -14,10 +14,6 @@ const News = (props) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  if (props.home === "Home") {
-    document.title = `NewsWala | Home`;
-  } else document.title = `NewsWala | ${capitalise(props.category)}`;
-
   const updateNews = async () => {
     props.setProgress(10);
     setLoading(true);
@@ -28,28 +24,45 @@ const News = (props) => {
     props.setProgress(70);
     setArticles(parsedData.articles);
     setTotalResults(parsedData.totalResults);
-    setPage(page + 1);
     setLoading(false);
+    // setPage(page + 1);
     props.setProgress(100);
   };
   const fetchMoreData = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apikey}&page=${page}&pageSize=${props.pageSize}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=${
+      props.country
+    }&category=${props.category}&apiKey=${props.apikey}&page=${
+      page + 1
+    }&pageSize=${props.pageSize}`;
     let data = await fetch(url);
     let parsedData = await data.json();
+    console.log(parsedData.articles);
     setArticles(articles.concat(parsedData.articles));
     setTotalResults(parsedData.totalResults);
     setPage(page + 1);
+    console.log(articles.length);
+    console.log(totalResults);
   };
   useEffect(() => {
     updateNews();
+    if (props.home === "Home") {
+      document.title = `NewsWala | Home`;
+    } else document.title = `NewsWala | ${capitalise(props.category)}`;
+    if (props.theme === "sun") {
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>
-      <h1 className="text-center m-3">
-        NewsWala - Top {capitalise(props.home === "Home" ? "" : props.category)}{" "}
-        Headlines
-      </h1>
+      <u>
+        <h1
+          style={{ marginTop: "80px", fontFamily: "cursive" }}
+          className={`text-center text-${props.tcolor} mb-2`}
+        >
+          NewsWala - Top{" "}
+          {capitalise(props.home === "Home" ? "" : props.category)} Headlines
+        </h1>
+      </u>
       {loading && <Spinner />}
       <InfiniteScroll
         dataLength={articles.length}
@@ -58,11 +71,13 @@ const News = (props) => {
         loader={<Spinner />}
       >
         <div className="container">
-          <div className="row">
+          <div className="row ">
             {articles.map((e) => {
               return (
                 <div className="col-md-4" key={e.url}>
                   <NewsItem
+                    tcolor={props.tcolor}
+                    bcolor={props.bcolor}
                     title={e.title}
                     description={e.description}
                     imageUrl={e.urlToImage}
